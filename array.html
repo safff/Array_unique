@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+	<meta charset="UTF-8">
+	<title></title>
 	</head>
 	<body>
 	</body>
@@ -11,18 +11,17 @@
 	var arr=[2,2,7,8,8,8,9,89,23,3,4,3,3,3,5,5];
 //1.把原有的数组已经改变
 	Array.prototype.unique1=function(){
-		var arr1=[];
-		arr1=this;
-		for(var i=0;i<arr1.length-1;i++){
-			for(j=i+1;j<arr1.length;j++){
-				if(arr1[j]==arr1[i]){
-					arr1.splice(j,1);
+		var arr=this;
+		for(var i=0;i<arr.length-1;i++){
+			for(j=i+1;j<arr.length;j++){
+				if(arr[j]==arr[i]){
+					arr.splice(j,1);
 					i--;
 				}
 			}
 		}
 		
-		return arr1;
+		return arr;
 	}
 	console.log(arr.unique1());
 	
