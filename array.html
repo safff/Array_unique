@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var arr=[2,2,7,8,8,8,9,89,23,3,4,3,3,3,5,5];
+//1.把原有的数组已经改变
+	Array.prototype.unique1=function(){
+		var arr1=[];
+		arr1=this;
+		for(var i=0;i<arr1.length-1;i++){
+			for(j=i+1;j<arr1.length;j++){
+				if(arr1[j]==arr1[i]){
+					arr1.splice(j,1);
+					i--;
+				}
+			}
+		}
+		
+		return arr1;
+	}
+	console.log(arr.unique1());
+	
+//2.
+	Array.prototype.unique2=function(){
+		var arr=[];
+		for(var i=0;i<this.length;i++){
+			if(arr.indexOf(this[i])==-1){
+				arr.push(this[i]);
+			}
+		}
+		return arr;
+	}
+	console.log(arr.unique2());
+	console.log(arr);
+	
+//3
+	//最快的运行速度，但是占用的空间比较大
+	Array.prototype.unique3=function(){
+		var pro={};
+		var arr=[];
+		for(var i=0;i<this.length;i++){
+			if(!pro[this[i]]){
+				pro[this[i]]=true;
+				arr.push(this[i]);
+			}
+		}
+		return arr;
+	}
+	console.log(arr.unique3());
+	
+//4，方法优于其他的方法
+	Array.prototype.unique4=function(){
+		this.sort(function(a,b){
+			return a-b;
+		});
+		var ss=[this[0]];
+		for(var i=1;i<this.length;i++){
+			if(this[i]!=ss[ss.length-1]){
+				ss.push(this[i]);
+			}
+		}
+		return ss;
+	}
+	console.log(arr.unique4());
+	
+</script>
